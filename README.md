@@ -1,2 +1,2 @@
-# openglDemo
+# testDemo
 demo
