@@ -1,14 +1,31 @@
 #include <iostream>
 #include "buildConfig.h"
 
+#include "GLFW/glfw3.h"
+
 using namespace std;
 
-int main()
+
+int main() 
 {
-    printf("currentVersion: %d.%d\n", VERSION_MAJOR, VERSION_MINOR);
+	glfwInit();
 
-    puts("test");
+	GLFWwindow* window = glfwCreateWindow(800, 600, "OpenGLTest", NULL, NULL);
+	if (window == NULL) {
+		std::cout << "Failed to create GLFW window " << std::endl;
+		glfwTerminate();
+		return -1;
+	}
+	glfwMakeContextCurrent(window);
 
-    return 0;
+	
+	while (!glfwWindowShouldClose(window)) {
+
+		glfwSwapBuffers(window);
+		glfwPollEvents();
+	}
+
+    glfwDestroyWindow(window);
+	glfwTerminate();
+	return 0;
 }
-
